@@ -385,10 +385,6 @@ $("#navbar-out-btt").click(() => {
 getTopCityList();
 
 setInterval(function() {
-  getData();
-}, 7500);
-
-setInterval(function() {
   if (localStorage.getItem("token") == null) {
     $("#navbar-reg-btt").show();
     $("#navbar-log-btt").show();
