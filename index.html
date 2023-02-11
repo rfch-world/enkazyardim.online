@@ -24,12 +24,12 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <input id="log-username-field" type="text" placeholder="isim" class="form-control">
-                    <input id="log-password-field" type="password" placeholder="parola" class="my-2 form-control">
+                    <input id="log-username-field" type="text" placeholder="İsim" class="form-control">
+                    <input id="log-password-field" type="password" placeholder="Parola" class="my-2 form-control">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
-                    <button id="login-button" type="button" class="btn btn-primary">Giriş ol</button>
+                    <button id="login-button" type="button" class="btn btn-primary">Giriş yap</button>
                 </div>
             </div>
         </div>
@@ -44,8 +44,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <input id="reg-username-field" type="text" placeholder="isim" class="form-control">
-                    <input id="reg-password-field" type="password" placeholder="parola" class="my-2 form-control">
+                    <input id="reg-username-field" type="text" placeholder="İsim" class="form-control">
+                    <input id="reg-password-field" type="password" placeholder="Parola" class="my-2 form-control">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
@@ -67,7 +67,7 @@
                     Silmek istediğinizden eminmisiniz?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">hayır, silme</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Hayır, silme</button>
                     <button type="button" id="clear-all-btn" class="btn btn-danger">Evet, sil</button>
                 </div>
             </div>
@@ -113,16 +113,16 @@
                             <select id="cities" class="form-select" required aria-label="select example">
                                 <option value="">Şehir Seç</option>
                             </select>
-                            <div class="invalid-feedback">Example invalid select feedback</div>
+                            <div class="invalid-feedback">Lütfen şehir seçiniz</div>
                         </div>
 
                         <div class="col-sm-6">
                             <label for="lastName" class="form-label">İlçe<span
                                     class="text-muted">(zorunlu)</span></label>
-                            <input id="district" type="text" class="form-control"  placeholder="İlçe giriniz" value=""
+                            <input id="district" type="text" class="form-control"  placeholder="İlçe Giriniz" value=""
                                 required="">
                             <div class="invalid-feedback">
-                                Lütfen sokak giriniz.
+                                Lütfen ilçe giriniz.
                             </div>
                         </div>
 
@@ -130,10 +130,14 @@
                             <label for="username" class="form-label">Bilgi Kaynağı <span
                                     class="text-muted">(zorunlu)</span></label>
                             <div class="input-group has-validation">
-                                <input type="text" class="form-control" id="information-source" placeholder="Kaynak giriniz"
-                                    required="">
+                                <select id="information-source" class="form-select" required aria-label="select example" required>
+                                    <option value="">Bilgi Kaynağı Seç</option>
+                                    <option value="Akrabası">Akrabası</option>
+                                    <option value="Arkadaşı">Arkadaşı</option>
+                                    <option value="Kendisi">Kendisi</option>
+                                </select>
                                 <div class="invalid-feedback">
-                                    Lütfen sokak giriniz.
+                                    Lütfen bilgi kaynağı giriniz.
                                 </div>
                             </div>
                         </div>
@@ -141,16 +145,16 @@
                             <label for="mahalle" class="form-label">Mahalle <span
                                     class="text-muted">(zorunlu)</span></label>
                             <div class="input-group has-validation">
-                                <input type="text" class="form-control" id="neighbourhood" placeholder="Mahelle giriniz"
+                                <input type="text" class="form-control" id="neighbourhood" placeholder="Mahelle Giriniz"
                                     required="">
                                 <div class="invalid-feedback">
-                                    Lütfen sokak giriniz.
+                                    Lütfen mahalle giriniz.
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <label for="address" class="form-label">Sokak</label>
-                            <input type="text" class="form-control" id="street" placeholder="1234 Main St" required="">
+                            <input type="text" class="form-control" id="street" placeholder="Sümbül Sokak" required="">
                             <div class="invalid-feedback">
                                 Lütfen sokak giriniz.
                             </div>
@@ -158,9 +162,9 @@
                         <div class="col-sm-6">
                             <label for="tel" class="form-label">İletişim <span
                                     class="text-muted">(zorunlu)</span></label>
-                            <input type="tel" class="form-control" id="phone-number" required="" placeholder="0 5555 555 55 55">
+                            <input type="tel" class="form-control" id="phone-number" required="" placeholder="0 555 555 55 55">
                             <div class="invalid-feedback">
-                                Lütfen sokak giriniz.
+                                Lütfen telefon numarası giriniz.
                             </div>
                         </div>
 
@@ -170,13 +174,16 @@
                             <label for="address2" class="form-label">İsim Soyisim <span
                                     class="text-muted">(Zorunlu)</span></label>
                             <input type="text" class="form-control" id="name-surname" required=""
-                                placeholder="Apartment or suite">
+                                placeholder="A. Yılmaz">
+                                <div class="invalid-feedback">
+                                    Lütfen isim soyisim giriniz.
+                                </div>
                         </div>
 
                         <div class="col-12">
                             <label for="tarif" class="form-label">Adres Tarifi <span class="text-muted">(zorunlu
                                     değil)</span></label>
-                            <input type="tel" class="form-control" id="adress" placeholder="Adres tarifi">
+                            <input type="tel" class="form-control" id="adress" placeholder="Adresi anlatınız">
                         </div>
                     </div>
 
@@ -212,9 +219,10 @@
                 <thead>
                     <tr>
                         <th>İl/İlçe/Mahalle/Sokak</th>
-                        <th>Adres Detaylı</th>
+                        <th>Adres Detayı</th>
                         <th>Ad Soyad</th>
                         <th>İletişim</th>
+                        <th>Bilgi Kaynağı</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -227,9 +235,9 @@
 
     <footer class="enkaz-footer" >
         <p>
-            <a href="https://getbootstrap.com/">Open Source</a>
+            <a href="https://github.com/rfch-world">Open Source</a>
         </p>
-        <p><a href="https://twitter.com/mdo">RFCH Takımı</a> ve <a href="#">gönüllü</a> arkadaşlarla <a href="#">geliştirildi.</a></p>
+        <p><a href="https://github.com/rfch-world/Enkaz">RFCH Takımı</a> ve <a href="https://github.com/orgs/rfch-world/people">gönüllü</a> arkadaşlarla geliştirildi.</p>
       </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"

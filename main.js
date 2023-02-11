@@ -58,9 +58,6 @@ const getTopCityList = () => {
 
 getTopCityList();
 
-
-//Fatih Ekledi
-
 const getData = () => {
   var table = $("#adress-table").DataTable();
   table.clear().draw(false);
@@ -84,7 +81,8 @@ const getData = () => {
               element.street,
               element.address,
               element.nameSurname,
-              element.phoneNumber
+              element.phoneNumber,
+              element.informationSource
             ]).draw(false);
           });
         });
