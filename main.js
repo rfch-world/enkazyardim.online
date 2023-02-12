@@ -25,7 +25,7 @@
 
 const getTopCityList = () => {
   $("#city-list").empty();
-  fetch("https://45.95.214.22:8282/sharing/topWreckList", {
+  fetch("http://45.95.214.22:8282/sharing/topWreckList", {
     method: "GET",
     headers: {
       "Content-Type": "application/json"
@@ -61,7 +61,7 @@ getTopCityList();
 const getData = () => {
   var table = $("#adress-table").DataTable();
   table.clear().draw(false);
-  fetch("https://45.95.214.22:8282/sharing/sharings", {
+  fetch("http://45.95.214.22:8282/sharing/sharings", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -106,7 +106,7 @@ $("#register-button").click(function () {
   if (username == "" || password == "") {
     alert("Please fill all fields...!!!!!!");
   } else {
-    fetch("https://45.95.214.22:8282/user/ip", {
+    fetch("http://45.95.214.22:8282/user/ip", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -117,7 +117,7 @@ $("#register-button").click(function () {
           response.json().then((text) => {
             ipAddress = text.data;
             data.ipAddress = ipAddress;
-            fetch("https://45.95.214.22:8282/auth/register", {
+            fetch("http://45.95.214.22:8282/auth/register", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -148,7 +148,7 @@ $("#register-button").click(function () {
 $("#login-button").click(function () {
   var username = $("#log-username-field").val();
   var password = $("#log-password-field").val();
-  fetch("https://45.95.214.22:8282/auth/login", {
+  fetch("http://45.95.214.22:8282/auth/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -307,7 +307,7 @@ $("#submit-adress-btn").click((e) => {
   ) {
     alert("Please fill all fields...!!!!!!");
   } else {
-    fetch("https://45.95.214.22:8181/api/verifyAdress", {
+    fetch("http://45.95.214.22:8181/api/verifyAdress", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -322,7 +322,7 @@ $("#submit-adress-btn").click((e) => {
         if (response.status == 200) {
           response.json().then((text) => {
             if (text.status == 200) {
-              fetch("https://45.95.214.22:8282/sharing/add", {
+              fetch("http://45.95.214.22:8282/sharing/add", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
