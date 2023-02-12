@@ -241,7 +241,7 @@ sehirler = [
   "Hakkari",
   "Hatay",
   "Isparta",
-  "İçel (Mersin)",
+  "Mersin",
   "İstanbul",
   "İzmir",
   "Kars",
