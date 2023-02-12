@@ -25,7 +25,7 @@
 
 const getTopCityList = () => {
   $("#city-list").empty();
-  fetch("http://45.95.214.22:8282/sharing/topWreckList", {
+  fetch("https://45.95.214.22:8282/sharing/topWreckList", {
     method: "GET",
     headers: {
       "Content-Type": "application/json"
@@ -48,7 +48,11 @@ const getTopCityList = () => {
           });
         });
       } else {
-        alert("Error");
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text:"Bir hata oluştu"
+        });
       }
     })
     .catch(error => {
@@ -61,7 +65,7 @@ getTopCityList();
 const getData = () => {
   var table = $("#adress-table").DataTable();
   table.clear().draw(false);
-  fetch("http://45.95.214.22:8282/sharing/sharings", {
+  fetch("https://45.95.214.22:8282/sharing/sharings", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -87,7 +91,11 @@ const getData = () => {
           });
         });
       } else {
-        alert("Error");
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text:"Bir hata oluştu"
+        });
       }
     })
     .catch((error) => {
@@ -104,9 +112,12 @@ $("#register-button").click(function () {
     password,
   };
   if (username == "" || password == "") {
-    alert("Please fill all fields...!!!!!!");
+    Swal.fire({
+      icon: "warning",
+      text: "Lütfen tüm alanları doldurunuz",
+    });
   } else {
-    fetch("http://45.95.214.22:8282/user/ip", {
+    fetch("https://45.95.214.22:8282/user/ip", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -117,7 +128,7 @@ $("#register-button").click(function () {
           response.json().then((text) => {
             ipAddress = text.data;
             data.ipAddress = ipAddress;
-            fetch("http://45.95.214.22:8282/auth/register", {
+            fetch("https://45.95.214.22:8282/auth/register", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -131,12 +142,20 @@ $("#register-button").click(function () {
                   localStorage.setItem("token", text.accessToken);
                 });
               } else {
-                alert("Error");
+                Swal.fire({
+                  icon: "error",
+                  title: "Oops...",
+                  text:"Bir hata oluştu"
+                });
               }
             });
           });
         } else {
-          alert("Error");
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text:"Bir hata oluştu"
+          });
         }
       })
       .catch((error) => {
@@ -148,31 +167,45 @@ $("#register-button").click(function () {
 $("#login-button").click(function () {
   var username = $("#log-username-field").val();
   var password = $("#log-password-field").val();
-  fetch("http://45.95.214.22:8282/auth/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      username,
-      password,
-    }),
-  })
-    .then((response) => {
-      if (response.status == 200) {
-        response.json().then((text) => {
-          alert("Login Successfull");
-          if (localStorage.getItem("token") == null) {
-            localStorage.setItem("token", text.accessToken);
-          }
-        });
-      } else {
-        alert("Error");
-      }
-    })
-    .catch((error) => {
-      console.log(error);
+  if ( username == "" || password == "") {
+    Swal.fire({
+      icon: "warning",
+      text: "Lütfen tüm alanları doldurunuz",
     });
+  } else {
+    fetch("https://45.95.214.22:8282/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    })
+      .then((response) => {
+        if (response.status == 200) {
+          response.json().then((text) => {
+            Swal.fire({
+              icon: "success",
+              text: "Giriş Başarılı",
+            });
+            if (localStorage.getItem("token") == null) {
+              localStorage.setItem("token", text.accessToken);
+            }
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text:"Bir hata oluştu"
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 });
 
 sehirler = [
@@ -303,11 +336,16 @@ $("#submit-adress-btn").click((e) => {
     nameSurname == "" ||
     informationSource == "" ||
     phoneNumber == "" ||
-    $("#clarification-text").is(":checked") == false
+    $("#clarification-text").is(":checked") == false ||
+    localStorage.getItem("token") == null
   ) {
-    alert("Please fill all fields...!!!!!!");
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Lütfen bütün boşlukları doldurunuz veya giriş yapınız!',
+    })
   } else {
-    fetch("http://45.95.214.22:8181/api/verifyAdress", {
+    fetch("https://45.95.214.22:8181/api/verifyAdress", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -319,10 +357,11 @@ $("#submit-adress-btn").click((e) => {
       }),
     })
       .then((response) => {
+        console.log(response);
         if (response.status == 200) {
           response.json().then((text) => {
             if (text.status == 200) {
-              fetch("http://45.95.214.22:8282/sharing/add", {
+              fetch("https://45.95.214.22:8282/sharing/add", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
@@ -331,17 +370,31 @@ $("#submit-adress-btn").click((e) => {
                 body: JSON.stringify(data),
               }).then((response) => {
                 if (response.status == 201) {
-                  alert("Address added");
+                  Swal.fire({
+                    icon: "success",
+                    title: "Adresiniz başarıyla eklendi",
+                  });
                 } else {
-                  alert("Error");
+                  Swal.fire({
+                    icon: "error",
+                    title: "Adres eklenemedi",
+                  });
                 }
               });
             } else {
-              alert("Address not found");
+              Swal.fire({
+                icon: "error",
+                title: "Adres bulunamadı",
+                text:"Verilerin doğruluğundan emin olunuz."
+              });
             }
           });
         } else {
-          alert("Error");
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text:"Bir hata oluştu"
+          });
         }
       })
       .catch((error) => {
