@@ -25,7 +25,7 @@
 
 const getTopCityList = () => {
   $("#city-list").empty();
-  fetch("https://45.95.214.22:8282/sharing/topWreckList", {
+  fetch("https://api.rfch.world/sharing/topWreckList", {
     method: "GET",
     headers: {
       "Content-Type": "application/json"
@@ -65,7 +65,7 @@ getTopCityList();
 const getData = () => {
   var table = $("#adress-table").DataTable();
   table.clear().draw(false);
-  fetch("https://45.95.214.22:8282/sharing/sharings", {
+  fetch("https://api.rfch.world/sharing/sharings", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -117,7 +117,7 @@ $("#register-button").click(function () {
       text: "Lütfen tüm alanları doldurunuz",
     });
   } else {
-    fetch("https://45.95.214.22:8282/user/ip", {
+    fetch("https://api.rfch.world/user/ip", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -128,7 +128,7 @@ $("#register-button").click(function () {
           response.json().then((text) => {
             ipAddress = text.data;
             data.ipAddress = ipAddress;
-            fetch("https://45.95.214.22:8282/auth/register", {
+            fetch("https://api.rfch.world/auth/register", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -173,7 +173,7 @@ $("#login-button").click(function () {
       text: "Lütfen tüm alanları doldurunuz",
     });
   } else {
-    fetch("https://45.95.214.22:8282/auth/login", {
+    fetch("https://api.rfch.world/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -345,7 +345,7 @@ $("#submit-adress-btn").click((e) => {
       text: 'Lütfen bütün boşlukları doldurunuz veya giriş yapınız!',
     })
   } else {
-    fetch("https://45.95.214.22:8181/api/verifyAdress", {
+    fetch("https://apiv1.rfch.world/api/verifyAdress", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -357,11 +357,10 @@ $("#submit-adress-btn").click((e) => {
       }),
     })
       .then((response) => {
-        console.log(response);
         if (response.status == 200) {
           response.json().then((text) => {
             if (text.status == 200) {
-              fetch("https://45.95.214.22:8282/sharing/add", {
+              fetch("https://api.rfch.world/sharing/add", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
