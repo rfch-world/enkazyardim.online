@@ -20,7 +20,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Giriş yap</h1>
+                    <h2 class="modal-title fs-5" id="exampleModalLabel">Giriş yap</h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -40,7 +40,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Kayıt ol</h1>
+                    <h2 class="modal-title fs-5" id="exampleModalLabel">Kayıt ol</h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -60,7 +60,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Tüm bilgiler silinecek</h1>
+                    <h2 class="modal-title fs-5" id="exampleModalLabel">Tüm bilgiler silinecek</h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -76,7 +76,7 @@
 
     <nav class="navbar fixed-top bg-light  navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand fw-bold" href="#">Enkaz</a>
+             <a class="navbar-brand" href="#"><img src="/enkaz-01.png" class="logo "></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -98,14 +98,14 @@
     </nav>
     <div class="pt-4 container form my-5">
         <div class="row g-5">
-            <div class="col-md-5 col-lg-4 order-md-last gap-2 category">
-                <ul class="list-group mb-3 ">
+            <div class="col-md-5 col-lg-4 order-md-last gap-2">
+                <ul class="list-group mb-3 category">
                     <li class="list-group-item">En fazla ilan bulunan şehirler</li>
                     <div id="city-list"></div>
                 </ul>
             </div>
             <div class="col-md-12 col-lg-8">
-                <h4 class="mb-3">Enkaz İlan</h4>
+                <h1 class="mt-4">Enkaz İlan</h4>
                 <hr>
                 <form class="needs-validation" novalidate="">
                     <div class="row g-3">
