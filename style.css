@@ -1,24 +1,25 @@
 nav {
     margin-bottom: 5%;
 }
+.logo {
+    width: 104px;
+}
+.form {
+    width: 90%!important;
+    height: 100%!important;
+}
 .delete {
     background-color: brown;
     border-color: brown;
 }
-@media only screen and (max-width: 450px) {
-    .category {
-        display: flex;
-    }
+.sorting_1 {
+    line-break: anywhere;
 }
-@media only screen and (max-width: 760px) {
-    .category {
-        order: 2;
-    }
+.category {
+    width: 100%;
 }
 @media only screen and (max-width: 450px) {
-    .form {
-        width: 500px!important;
-    }
+
     .enkaz-footer {
         width: 500px!important;
     }
@@ -34,27 +35,28 @@ nav {
     }
 }
 table {
-    font-size: 15px;
+    font-size: 12px;
 }
 table tr {
-    font-size: 15px;
+    font-size: 12px;
 }
 table th {
     font-size: 12px;
 }
 .paginate_button a{
-    font-size: 15px!important;
+    font-size: 12px!important;
 }
 .dataTables_info {
-    font-size: 15px;
+    font-size: 12px;
 }
 .dataTables_length {
-    font-size: 15px;
+    font-size: 12px;
 }    
 /*
 * Footer
 */
 .enkaz-footer {
+    /* display: none; */
 padding: 2.5rem 0;
 color: #727272;
 text-align: center;
